@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagEditor", "TagEditor\TagEditor.csproj", "{82D80227-81B1-44D2-A8BC-28D7D4F63596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Packager", "LevelCreator\Packager.csproj", "{AA004F73-7B18-48F9-9DAD-A6E2CA9D856D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputMappingEditor", "InputMappingEditor\InputMappingEditor.csproj", "{693B6AFD-EB34-459E-9D7C-09D15F698B14}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{CC5359BB-1563-4135-9EE5-1E99D3AF3818}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "GDKSetup", "GDKSetup\GDKSetup.wixproj", "{C91207D7-2A8F-4B13-89BD-C143454BE38C}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs07.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GDKSetup\\GDKSetup.wixproj
+		SccProjectTopLevelParentUniqueName1 = GDK.sln
+		SccProjectName1 = GDKSetup
+		SccLocalPath1 = GDKSetup
+		SccProjectUniqueName2 = InputMappingEditor\\InputMappingEditor.csproj
+		SccProjectName2 = InputMappingEditor
+		SccLocalPath2 = InputMappingEditor
+		SccProjectUniqueName3 = LevelCreator\\Packager.csproj
+		SccProjectName3 = LevelCreator
+		SccLocalPath3 = LevelCreator
+		SccProjectUniqueName4 = TagEditor\\TagEditor.csproj
+		SccProjectName4 = TagEditor
+		SccLocalPath4 = TagEditor
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82D80227-81B1-44D2-A8BC-28D7D4F63596}.Debug|x86.ActiveCfg = Debug|x86
+		{82D80227-81B1-44D2-A8BC-28D7D4F63596}.Debug|x86.Build.0 = Debug|x86
+		{82D80227-81B1-44D2-A8BC-28D7D4F63596}.Release|x86.ActiveCfg = Release|x86
+		{82D80227-81B1-44D2-A8BC-28D7D4F63596}.Release|x86.Build.0 = Release|x86
+		{AA004F73-7B18-48F9-9DAD-A6E2CA9D856D}.Debug|x86.ActiveCfg = Debug|x86
+		{AA004F73-7B18-48F9-9DAD-A6E2CA9D856D}.Debug|x86.Build.0 = Debug|x86
+		{AA004F73-7B18-48F9-9DAD-A6E2CA9D856D}.Release|x86.ActiveCfg = Release|x86
+		{AA004F73-7B18-48F9-9DAD-A6E2CA9D856D}.Release|x86.Build.0 = Release|x86
+		{693B6AFD-EB34-459E-9D7C-09D15F698B14}.Debug|x86.ActiveCfg = Debug|x86
+		{693B6AFD-EB34-459E-9D7C-09D15F698B14}.Debug|x86.Build.0 = Debug|x86
+		{693B6AFD-EB34-459E-9D7C-09D15F698B14}.Release|x86.ActiveCfg = Release|x86
+		{693B6AFD-EB34-459E-9D7C-09D15F698B14}.Release|x86.Build.0 = Release|x86
+		{C91207D7-2A8F-4B13-89BD-C143454BE38C}.Debug|x86.ActiveCfg = Debug|x86
+		{C91207D7-2A8F-4B13-89BD-C143454BE38C}.Debug|x86.Build.0 = Debug|x86
+		{C91207D7-2A8F-4B13-89BD-C143454BE38C}.Release|x86.ActiveCfg = Release|x86
+		{C91207D7-2A8F-4B13-89BD-C143454BE38C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C91207D7-2A8F-4B13-89BD-C143454BE38C} = {CC5359BB-1563-4135-9EE5-1E99D3AF3818}
+	EndGlobalSection
+EndGlobal

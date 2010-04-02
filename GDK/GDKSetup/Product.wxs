@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="317097eb-5f60-4aca-9572-71c5e4d34863" Name="XNA Shooter Engine GDK" Language="1033" Version="0.1.0"
+           Manufacturer="coDrivr, LLC." UpgradeCode="7332a32d-99a9-49ec-a05a-46ef99c8682b">
+    
+		<Package Description="Installer for the XNA Shooter Engine GDK" Manufacturer="coDrivr, LLC." Id="*" InstallScope="perMachine" InstallPrivileges="elevated"
+             InstallerVersion="200" Compressed="yes"  />
+    
+    <UIRef Id="WixUI_Mondo" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+    <Property Id="WIXUI_INSTALLDIR" Value="TOP_LEVEL_DIR" />
+
+    <Property Id='ARPHELPLINK'>http://xse.codeplex.com/Thread/List.aspx</Property>
+    <Property Id='ARPURLINFOABOUT'>http://xse.codeplex.com</Property>
+    <Property Id='ARPURLUPDATEINFO'>http://xse.codeplex.com/releases</Property>
+
+    <?define EngineBuildDir = ..\..\..\Engine\bin-win7_x86_release\ ?>
+    <?define GdkBuildDir = ..\..\..\GDK\bin-x86_release ?>
+
+    <Media Id="1" Cabinet="GdkSetupCab.cab" EmbedCab="yes" />
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLLOCATION" Name="XNA Shooter Engine">
+          <Directory Id="ToolsFolder" Name="Tools">
+            <Component Id="InputMapEditor" Guid="5FDAF533-620B-4DF1-ABEF-645E20D2B2DA">
+
+              <File Id="IME_Executable" Source="$(var.GdkBuildDir)\InputMappingEditor.exe" Name="InputMapEditor.exe" KeyPath="yes">
+                <Shortcut Id='startMenuIMEShortcut' Directory='AppToolsFolder' Name='Input Map Editor' Advertise='yes' />
+              </File>
+
+              <ProgId Id='XSE.inputfile' Description='XSE Input Map Definition File'>
+                <Extension Id='input' ContentType='application/xse-input'>
+                  <Verb Id='open' Command='Open' TargetFile='IME_Executable' Argument='%1' />
+                </Extension>
+              </ProgId>
+
+            </Component>
+
+            <Component Id="ToolEngineInputLib" Guid="e155728c-c511-4156-87ac-1afb93aa5313">
+              <File Id="ToolEngineInputLib" Source="$(var.GdkBuildDir)\Engine.Input.dll" Name="Engine.Input.dll" KeyPath="yes"/>
+            </Component>
+
+            <Component Id="XnaFrameworkLib" Guid="d3f25d8e-ec07-4018-aa7a-83215c4370a3">
+              <File Id="XNAFrameworkLib" Source="$(var.GdkBuildDir)\Microsoft.Xna.Framework.dll" Name="Microsoft.Xna.Framework.dll" KeyPath="yes" />
+            </Component>
+
+            <Component Id="PackageTool" Guid="6637DE17-3C9D-4372-888E-58D92D0F386C">
+              <File Id="Pkgr_Executable" Source="$(var.GdkBuildDir)\Packager.exe" Name="Packager.exe" KeyPath="yes">
+                <Shortcut Id='startMenuPkgrShortcut' Directory='AppToolsFolder' Name='Packager' Advertise='yes' />
+              </File>
+            </Component>
+            
+            <Component Id="TagEditor" Guid="6C0283A6-4008-41A9-8358-F9DC35014B01">
+              <File Id="TagEditor_Executable" Source="$(var.GdkBuildDir)\TagEditor.exe" Name="TagEditor.exe" KeyPath="yes">
+                <Shortcut Id='startMenuTagEditShortcut' Directory='AppToolsFolder' Name='Tag Editor' Advertise='yes' />
+              </File>
+            </Component>
+          </Directory>
+          <Directory Id="LibraryBinFolder" Name="bin">
+            <Component Id="EngineLib" Guid="da3a53fe-f147-442a-b38e-db63f545cc63">
+              <File Id="EngineLib" Source="$(var.EngineBuildDir)\Engine.dll" Name="Engine.dll" KeyPath="yes" />
+            </Component>
+            <Component Id="EngineLibDoc" Guid="495bd977-708b-4f14-92e6-e8746025bc93">
+              <File Id="EngineLibDoc" Source="$(var.EngineBuildDir)\Engine.xml" Name="Engine.xml" KeyPath="yes" />
+            </Component>
+            <Component Id="EngineInputLib" Guid="80bb35ae-901d-4cfb-9215-42a541f7d1ba">
+              <File Id="EngineInputLib" Source="$(var.EngineBuildDir)\Engine.Input.dll" Name="Engine.Input.dll" KeyPath="yes" />
+            </Component>
+            <Component Id="EngineInputLibDoc" Guid="0882d07b-7b7b-4142-b365-146cfd4f0b87">
+              <File Id="EngineInputLibDoc" Source="$(var.EngineBuildDir)\Engine.Input.xml" Name="Engine.Input.xml" KeyPath="yes" />
+            </Component>
+            <Component Id="EnginePackagerLib" Guid="c916d076-28e2-4c17-96b4-2b538a7af426">
+              <File Id="EnginePackagerLib" Source="$(var.EngineBuildDir)\Engine.Packager.dll" Name="Engine.Packager.dll" KeyPath="yes" />
+            </Component>
+            <Component Id="EnginePackagerLibDoc" Guid="1ad671bc-1df5-4b0a-ba09-2d3379784b82">
+              <File Id="EnginePackagerLibDoc" Source="$(var.EngineBuildDir)\Engine.Packager.xml" Name="Engine.Packager.xml" KeyPath="yes" />
+            </Component>
+          </Directory>
+				</Directory>
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="XNA Shooter Engine">
+          <Component Id="ApplicationProgramsFolder" Guid="ddc9c3eb-9e28-490b-afb0-6f64e87e4e24">
+            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+          <Directory Id="AppToolsFolder" Name="Tools">
+            <Component Id="AppToolsFolder" Guid="6f6ac46b-f074-4875-a514-095d80ff6034">
+              <RemoveFolder Id='AppToolsFolder' On='uninstall' />
+              <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+		<Feature Id="GdkToolsFeature" Title="Engine Tools" Level="1" Description="Installs various tools for creating and editing files used by the game engine.">
+      <ComponentRef Id="InputMapEditor" />
+      <ComponentRef Id="PackageTool" />
+      <ComponentRef Id="TagEditor" />
+      <ComponentRef Id="XnaFrameworkLib"/>
+      <ComponentRef Id="ToolEngineInputLib"/>
+      <ComponentRef Id="ApplicationProgramsFolder"/>
+      <ComponentRef Id="AppToolsFolder"/>
+			
+			<!-- Note: The following ComponentGroupRef is required to pull in generated authoring from project references. -->
+			<ComponentGroupRef Id="Product.Generated" />
+		</Feature>
+
+    <Feature Id="EngineLibraries" Title="Game Engine" Level="1" Description="Installs the game engine libraries.">
+      <ComponentRef Id="EngineLib"/>
+      <ComponentRef Id="EngineLibDoc"/>
+      <ComponentRef Id="EngineInputLib"/>
+      <ComponentRef Id="EngineInputLibDoc"/>
+      <ComponentRef Id="EnginePackagerLib"/>
+      <ComponentRef Id="EnginePackagerLibDoc"/>
+    </Feature>
+
+    <Feature Id="Documentation" Title="Documentation" Level="1" Description="Installs the documentation for the game engine and related tools." />
+
+    <Feature Id="SampleGame" Title="Sample Game" Level="2" Description="Installs a sample XSE game, complete with source code.">
+      
+    </Feature>
+	</Product>
+</Wix>
